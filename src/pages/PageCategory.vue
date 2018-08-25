@@ -1,18 +1,17 @@
 <template>
-  <div v-if="asyncDataStatus_ready" class="col-full">
-    <h1>{{ category.name }}</h1>
-    <CategoryListItem :category="category"/>
+  <div v-if="asyncDataStatus_ready" class="col-full ss">
+    <CategoryListItemFull :category="category"/>
   </div>
 </template>
 
 <script>
     import {mapActions} from 'vuex'
-    import CategoryListItem from '@/components/CategoryListItem'
+    import CategoryListItemFull from '@/components/CategoryListItemFull'
     import asyncDataStatus from '@/mixins/asyncDataStatus'
 
     export default {
       components: {
-        CategoryListItem
+        CategoryListItemFull
       },
 
       mixins: [asyncDataStatus],

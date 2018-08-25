@@ -1,6 +1,6 @@
 <template>
   <ul class="list-group list-group-flush">
-    <ForumListItem
+    <ForumListItemFull
       v-for="forum in forums"
       :forum="forum"
       :key="forum['.key']"
@@ -9,10 +9,10 @@
 </template>
 
 <script>
-    import ForumListItem from './ForumListItem'
+    import ForumListItemFull from './ForumListItemFull'
     export default {
       components: {
-        ForumListItem
+        ForumListItemFull
       },
 
       props: {

@@ -1,26 +1,24 @@
 <template>
-  <div class="col-sm-4">
+  <div class="col-sm-12">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title">
-          <router-link :to="{name: 'Category', params: {id: category['.key']}}">
+        <h1 class="card-title">
             {{ category.name }}
-          </router-link>
-        </h5>
+        </h1>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       </div>
       <hr>
-      <ForumList :forums="categoryForums"/>
+      <ForumListFull :forums="categoryForums"/>
     </div>
   </div>
 </template>
 
 <script>
-    import ForumList from './ForumList'
+    import ForumListFull from './ForumListFull'
 
     export default {
       components: {
-        ForumList
+        ForumListFull
       },
 
       props: {

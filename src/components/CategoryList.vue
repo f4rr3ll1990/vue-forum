@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="row">
     <CategoryListItem
       v-for="category in categories"
       :category="category"

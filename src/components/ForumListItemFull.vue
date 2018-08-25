@@ -1,9 +1,9 @@
 <template>
   <div>
     <li class="list-group-item">
-      <div>
+      <div class="col-sm-12">
         <router-link
-          class=""
+          class="link"
           :to="{name: 'Forum', params: {id: forum['.key']}}"
         >
           {{forum.name}}
@@ -13,7 +13,7 @@
           </span>
         </router-link>
        </div>
-       <div>
+       <div class="col-sm-12">
         <p class="link-descr">{{forum.description}}</p>
        </div>
     </li>
@@ -40,7 +40,10 @@
 </script>
 
 <style scoped>
+  .link {
+    font-size: 1rem;
+  }
   .link-descr {
-    font-size: .850rem;
+    font-size: 1rem;
   }
 </style>
