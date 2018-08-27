@@ -71,6 +71,20 @@ export default {
             resolve(post)
           })
       })
+    },  
+    deleteThread ({commit, state, rootState}, thread) {
+      firebase.database().ref('threads').child(thread.id).remove()
+      firebase.database().ref('forums/' + thread.forumId + '/threads').child(thread.id).remove()
+
+      Object.keys(thread.posts).forEach(function(entry) {
+        firebase.database().ref('posts').child(entry).remove()
+      });
+    },
+    editThread ({state, commit, rootState}, {id, title}) {
+      const update = {}
+      update.title = title
+
+      firebase.database().ref('threads').child(id).update(update)
     },
     fetchThread: ({dispatch}, {id}) => dispatch('fetchItem', {resource: 'threads', id, emoji: '📄'}, {root: true}),
     fetchThreads: ({dispatch}, {ids}) => dispatch('fetchItems', {resource: 'threads', ids, emoji: '🌧'}, {root: true})

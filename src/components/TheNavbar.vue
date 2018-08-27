@@ -12,19 +12,10 @@
             class="nav-link">Главная
         </router-link>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
+      <li class="nav-item" v-for="category in categories" v-bind:key="category['.key']">
+        <router-link class="nav-link" :to="{name: 'Category', params: {id: category['.key']}}">
+          {{ category.name }}
+        </router-link>
       </li>
     </ul>
     <ul v-if="user" class="navbar-nav mr-right">
@@ -39,6 +30,12 @@
           <router-link :to="{name: 'Profile'}" class="dropdown-item">Профиль</router-link>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" @click.prevent="$store.dispatch('auth/signOut')">Выход</a>
+          <div v-if="user.isAdmin" class="dropdown-divider"></div>
+          <router-link v-if="user.isAdmin" :to="{name: 'AdminCategories'}">Категории</router-link>
+          <div v-if="user.isAdmin" class="dropdown-divider"></div>
+          <router-link v-if="user.isAdmin" :to="{name: 'AdminForums'}">Форумы</router-link>
+          <div v-if="user.isAdmin" class="dropdown-divider"></div>
+          <router-link v-if="user.isAdmin" :to="{name: 'AdminThreads'}">Ветки</router-link>
         </div>
       </li>      
     </ul>
@@ -66,7 +63,10 @@
     computed: {
       ...mapGetters({
         'user': 'auth/authUser'
-      })
+      }),
+      categories () {
+        return Object.values(this.$store.state.categories.items)
+      }
     }
   }
 </script>

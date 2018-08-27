@@ -1710,7 +1710,7 @@ button {
 
 .link {
     color: #57AD8D;
-    text-decoration: underline;
+    text-decoration: none;
     transition: all ease 0.4s;
 }
 
@@ -2213,13 +2213,13 @@ body {
 }
 
 body a {
-    color: #57AD8D;
+    
     text-decoration: none;
     transition: all .6s ease;
 }
 
 body a:hover {
-    color: #41826a;
+
     cursor: pointer;
 }
 

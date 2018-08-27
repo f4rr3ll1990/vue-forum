@@ -1,14 +1,13 @@
 <template>
   <form @submit.prevent="save">
     <div class="form-group">
-      <label for="thread_title">Title:</label>
-      <input v-model="form.title" type="text" id="thread_title" class="form-input" name="title">
+      <label for="thread_title">Name:</label>
+      <input v-model="form.name" type="text" id="thread_title" class="form-input" name="name">
     </div>
 
     <div class="form-group">
-      <label for="thread_content">Content:</label>
-      <!-- <textarea v-model="form.text" id="thread_content" class="form-input" name="content" rows="8" cols="140"></textarea> -->
-      <vue-mce v-model="form.text" :config="config" />
+      <label for="thread_content">Slug:</label>
+      <input v-model="form.slug" id="thread_content" class="form-input" name="content" rows="8" cols="140" />    
     </div>
 
     <div class="btn-group">
@@ -21,11 +20,11 @@
 <script>
     export default {
       props: {
-        title: {
+        name: {
           type: String,
           default: ''
         },
-        text: {
+        slug: {
           type: String,
           default: ''
         }
@@ -34,26 +33,21 @@
       data () {
         return {
           form: {
-            title: this.title,
-            text: this.text
-          },
-          config: {
-            theme: 'modern',
-            fontsize_formats: "8px 10px 12px 14px 16px 18px 20px 22px 24px 26px 39px 34px 38px 42px 48px",
-            plugins: 'print preview fullpage image searchreplace autolink',
+            name: this.name,
+            slug: this.slug
           }
         }
       },
 
       computed: {
         isUpdate () {
-          return !!this.title
+          return !!this.name
         }
       },
 
       methods: {
         save () {
-          this.$emit('save', {title: this.form.title, text: this.form.text})
+          this.$emit('save', {name: this.form.name, slug: this.form.slug})
         },
 
         cancel () {

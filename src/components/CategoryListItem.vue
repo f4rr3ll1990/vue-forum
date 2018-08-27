@@ -10,7 +10,7 @@
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       </div>
       <hr>
-      <ForumList :forums="categoryForums"/>
+      <ForumList v-if="categoryForums" :forums="categoryForums" />
     </div>
   </div>
 </template>
@@ -22,7 +22,11 @@
       components: {
         ForumList
       },
-
+      data() {
+        return {
+          list: false
+        }
+      },
       props: {
         category: {
           required: true,
@@ -35,6 +39,8 @@
           return Object.values(this.$store.state.forums.items)
             .filter(forum => forum.categoryId === this.category['.key'])
         }
+      },
+      created() {
       }
     }
 </script>

@@ -1,6 +1,7 @@
 <template>
   <div class="row">
     <CategoryListItem
+      v-if="categories"
       v-for="category in categories"
       :category="category"
       :key="category['.key']"

@@ -1,7 +1,8 @@
 <template>
   <form @submit.prevent="save">
     <div class="form-group">
-        <froala :tag="'textarea'" :config="config" v-model="text" class="form-input" name="content"></froala>
+        <!-- <froala :tag="'textarea'" :config="config" v-model="text" class="form-input" name="content"></froala> -->
+        <vue-mce v-model="text" :config="config" />
     </div>
     <div class="form-actions">
       <button v-if="isUpdate" @click.prevent="cancel" class="btn btn-ghost">Cancel</button>
@@ -39,17 +40,10 @@
         return {
           text: this.post ? this.post.text : '',
           config: {
-            imageUpload: true,
-            	toolbarButtons: ['fullscreen', 'bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '|', 'fontFamily', 'fontSize', 'color', 'inlineStyle', 'paragraphStyle', '|', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'outdent', 'indent', 'quote', '-', 'insertLink', 'insertImage', 'insertVideo', 'insertFile', 'insertTable', '|', 'emoticons', 'specialCharacters', 'insertHR', 'selectAll', 'clearFormatting', '|', 'print', 'help', 'html', '|', 'undo', 'redo'],
-            imageInsertButtons: ['imageBack', '|', 'imageManager'],
-            imageUploadURL: '/upload_image',
-            placeholderText: 'Введите текст',
-            events: {
-              'froalaEditor.initialized': function () {
-                console.log('initialized')
-              }
-            }
-          }
+            theme: 'modern',
+            fontsize_formats: "8px 10px 12px 14px 16px 18px 20px 22px 24px 26px 39px 34px 38px 42px 48px",
+            plugins: 'print preview fullpage image searchreplace autolink',
+          },
         }
       },
 

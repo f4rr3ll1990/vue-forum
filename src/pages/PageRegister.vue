@@ -1,6 +1,6 @@
 <template>
-  <div class="flex-grid justify-center">
-    <div class="col-2">
+  <div class="container">
+    <div class="col-sm-6">
 
       <form @submit.prevent="register" class="card card-form">
         <h1 class="text-center">Register</h1>

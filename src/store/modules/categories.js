@@ -21,6 +21,23 @@ export default {
         })
       })
     },
+    createCategory ({commit, state, rootState}, category) {
+      const cattId = firebase.database().ref('categories').push().key
+      const updates = {}
+      
+      updates[`categories/${cattId}`] = category
+      firebase.database().ref().update(updates)
+    },
+    deleteCategory ({commit, state, rootState}, id) {
+      firebase.database().ref('categories').child(id).remove()
+    },
+    updateCategory ({state, commit, rootState}, {id, name, slug}) {
+        const update = {}
+        update.name = name
+        update.slug = slug
+
+        firebase.database().ref('categories').child(id).update(update)
+    },
 
     fetchCategory: ({dispatch}, {id}) => dispatch('fetchItem', {resource: 'categories', id, emoji: '🏷'}, {root: true}),
     fetchCategories: ({dispatch}, {ids}) => dispatch('fetchItems', {resource: 'categories', ids, emoji: '🏷'}, {root: true})

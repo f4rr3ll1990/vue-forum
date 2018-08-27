@@ -30,7 +30,8 @@ export default {
         const registeredAt = Math.floor(Date.now() / 1000)
         const usernameLower = username.toLowerCase()
         email = email.toLowerCase()
-        const user = {avatar, email, name, username, usernameLower, registeredAt}
+        let isAdmin = false 
+        const user = {avatar, email, name, username, usernameLower, registeredAt, isAdmin}
         firebase.database().ref('users').child(id).set(user)
           .then(() => {
             commit('setItem', {resource: 'users', id: id, item: user}, {root: true})
