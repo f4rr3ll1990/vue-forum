@@ -18,8 +18,6 @@ require('froala-editor/css/froala_style.min.css')
 import VueFroala from 'vue-froala-wysiwyg'
 Vue.use(VueFroala)
 
-Vue.use(VueMce)
-
 Vue.component('AppDate', AppDate)
 
 Vue.config.productionTip = false
