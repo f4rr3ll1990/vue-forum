@@ -4,7 +4,7 @@
       <div class="forum-header">
         <div class="forum-details">
           <h1>{{forum.name}}</h1>
-          <p class="text-lead">{{forum.description}}</p>
+          <p class="text-lead" v-html="forum.description"></p>
         </div>
         <router-link
           :to="{name: 'ThreadCreate', params: {forumId: this.forum['.key']}}"

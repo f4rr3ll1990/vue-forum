@@ -1,8 +1,7 @@
 <template>
   <form @submit.prevent="save">
-    <div class="form-group">
-        <!-- <froala :tag="'textarea'" :config="config" v-model="text" class="form-input" name="content"></froala> -->
-        <vue-mce v-model="text" :config="config" />
+    <div class="form-group col-sm-8 offset-md-2 area">
+      <froala :tag="'textarea'" :config="config" v-model="text" class="form-input" name="content"></froala>
     </div>
     <div class="form-actions">
       <button v-if="isUpdate" @click.prevent="cancel" class="btn btn-ghost">Cancel</button>
@@ -13,6 +12,7 @@
 
 <script>
     import {mapActions} from 'vuex'
+    import VueFroala from 'vue-froala-wysiwyg';
     export default {
       props: {
         threadId: {
@@ -40,10 +40,9 @@
         return {
           text: this.post ? this.post.text : '',
           config: {
-            theme: 'modern',
-            fontsize_formats: "8px 10px 12px 14px 16px 18px 20px 22px 24px 26px 39px 34px 38px 42px 48px",
-            plugins: 'print preview fullpage image searchreplace autolink',
-          },
+            toolbarInline: true,
+            toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'color', 'emoticons', '-', 'paragraphFormat', 'align', 'formatOL', 'formatUL', 'indent', 'outdent', '-', 'insertImage', 'insertLink', 'insertFile', 'insertVideo', 'undo', 'redo']
+          }
         }
       },
 
@@ -93,5 +92,8 @@
 </script>
 
 <style scoped>
-
+  .area {
+    background-color: #eeeeee;
+    height: 100px;
+  }
 </style>

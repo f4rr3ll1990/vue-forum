@@ -21,7 +21,7 @@
 
     <div class="form-group">
       <label for="thread_content">Description:</label>
-      <input v-model="form.description" id="thread_content" class="form-input" name="content" rows="8" cols="140" />    
+      <froala :tag="'textarea'" v-model="form.description"></froala>
     </div>
 
     <div class="btn-group">
@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import VueFroala from 'vue-froala-wysiwyg';
 import {mapActions} from 'vuex'
     export default {
       props: {

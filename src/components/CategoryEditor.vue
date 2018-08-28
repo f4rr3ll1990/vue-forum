@@ -7,7 +7,7 @@
 
     <div class="form-group">
       <label for="thread_content">Slug:</label>
-      <input v-model="form.slug" id="thread_content" class="form-input" name="content" rows="8" cols="140" />    
+      <input v-model="form.slug" id="thread_content" class="form-input" name="content" rows="8" cols="140" />
     </div>
 
     <div class="btn-group">
@@ -18,6 +18,7 @@
 </template>
 
 <script>
+
     export default {
       props: {
         name: {

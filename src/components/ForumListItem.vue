@@ -14,7 +14,7 @@
         </router-link>
        </div>
        <div>
-        <p class="link-descr">{{forum.description}}</p>
+        <p class="link-descr" v-html="forum.description"></p>
        </div>
     </li>
   </div>
