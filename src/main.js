@@ -6,7 +6,6 @@ import App from './App'
 import router from './router'
 import store from '@/store'
 import AppDate from '@/components/AppDate'
-import VueMce from 'vue-mce'
 // Require Froala Editor js file.
 require('froala-editor/js/froala_editor.pkgd.min')
  
